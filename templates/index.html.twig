@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home page{% endblock %}
+
+{% block body %}
+<div class="container w-25 mt-5">
+<h1>Create Secret</h1>
+{{ form_start(secretForm) }}
+    {{ form_widget(secretForm) }}
+    <button type="submit" class="btn btn-primary">Save</button>
+{{ form_end(secretForm) }}
+<div class="main-content mt-3">
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+</div>
+</div>
+
+<div class="main-content">
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">
+            {{ msg }}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

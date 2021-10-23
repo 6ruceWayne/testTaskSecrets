@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Reveal secret{% endblock %}
+{% block body %}
+<div class="container w-25 mt-5">
+{% if revealForm is defined %}
+    <h1>Read secret</h1>
+    {{ form_start(revealForm) }}
+        {{ form_widget(revealForm) }}
+        <button type="submit" class="btn btn-primary">Reveal</button>
+    {{ form_end(revealForm) }}
+{% endif %}
+{% if secret is defined and secret is not null %}
+    {{secret.text}}
+{% endif %}
+<div class="main-content mt-3">
+    {% for msg in app.session.flashBag.get('error') %}
+        <div class="alert alert-danger">
+            {{ msg }}
+        </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
